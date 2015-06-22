@@ -15,9 +15,8 @@ public static String CONNECTION_ISSUE_ERROR="Connection failed ,please contact s
 
 public static String LOGIN_ACTION_URL="loginVerification.action";
 public static String CUSTOMER_URL="customerDetails.action";
-public static String CUSTOMER_URL_SAVING="updateCustomerDetails.action";
 
 public static String USER_NOT_FOUND_MESSAGE="User not found";
 public static String USER_FOUND_MESSAGE="User Found";
-
+public static String UPDATE_CUSTOMER_ACTION="customerDetailsUpdate.action";
 }

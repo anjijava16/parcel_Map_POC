@@ -13,11 +13,10 @@
 <script type="text/javascript">
 $( document ).ready(function() {
 	$("#username").focus();
-	 $("#username").change(function(e)
+	 $("#checkUserId").click(function(e)
 			 {
 		 		var username = document.getElementById("username").value;
 			     var postData = $(this).serialize();
-			     alert("PostData"+postData);
 			     var formURL = $(this).attr("action");
 			     $.ajax(
 			     {
@@ -27,9 +26,6 @@ $( document ).ready(function() {
 			         dataType: 'json',
 			         success:function(data, textStatus, jqXHR)
 			         {
-			        		if(data=="User not found"){
-			        			  $("#welcometext").val(data);
-			        		}else{
 			            $("#userID").val(data.countryInfo.userID);
 			            $("#userSal").val(data.countryInfo.userSal);
 			            $("#userComments").val(data.countryInfo.userComments);
@@ -39,13 +35,11 @@ $( document ).ready(function() {
 			            $("#userProj").val(data.countryInfo.userProject);
 			            $("#userEmail").val(data.countryInfo.userEmail);
 			            $("#userPhone").val(data.countryInfo.userPhone);
-			         }
+			            document.getElementById("welcometext").innerHTML="";
 			         },
 			         error: function(jqXHR, textStatus, errorThrown)
 			         {
-			        	console.log("Something really bad happened " + textStatus);
-			            alert("Error"+textStatus+" "+jqXHR.responseText);
-			            $("#welcometext").val(data);
+			        	 /* $("#welcometext").val(jqXHR.responseText); */
 			            $("#userID").val("");
 			            $("#userSal").val("");
 			            $("#userComments").val("");
@@ -55,6 +49,7 @@ $( document ).ready(function() {
 			            $("#userProj").val("");
 			            $("#userEmail").val("");
 			            $("#userPhone").val("");
+			            document.getElementById("welcometext").innerHTML="User Data NotFound";
 			         }
 			     });
 			     e.preventDefault(); //STOP default action
@@ -65,13 +60,13 @@ $( document ).ready(function() {
 </script>
 <body>
 	<h2>Home Page</h2>
-	<form action="updateCustomerDetails.action" name="customerForm">
+	<form action="customerDetailsUpdate.action" name="customerForm" method="post">
 		<table>
 			<tr>
 				<td>USER_NAME</td>
 				<td><input type="text" name="username" id="username"
-					maxlength="100" class="target" /></td>
-				<td><div id="welcometext" /></td>
+					maxlength="100" class="target" /></td><td><input type="submit" name="CheckUser" value="CheckUser" id="checkUserId"/></td>
+					<td><div id="welcometext" /></td>				
 			</tr>
 			<tr>
 				<td>USER_ID</td>

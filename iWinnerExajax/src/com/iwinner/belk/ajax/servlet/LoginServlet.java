@@ -46,7 +46,9 @@ public class LoginServlet extends HttpServlet {
 				doLoginExecute(request,response);
 			} else if(BelkAjaxPOCConstatnts.CUSTOMER_URL.equals(uri)){
 				customerDetailsAction(request,response);
-			}	
+			}	else if(BelkAjaxPOCConstatnts.UPDATE_CUSTOMER_ACTION.equals(uri)){
+				customerDetailsAction(request,response);
+			}
 	}
 
 	/**
@@ -61,7 +63,10 @@ public class LoginServlet extends HttpServlet {
 				doLoginExecute(request,response);
 			} else if(BelkAjaxPOCConstatnts.CUSTOMER_URL.equals(uri)){
 				customerDetailsAction(request,response);
+			} else if(BelkAjaxPOCConstatnts.UPDATE_CUSTOMER_ACTION.equals(uri)){
+				customerDetailsAction(request,response);
 			}
+			
     }
     public void doLoginExecute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     Integer verifyLoginId=0;
@@ -132,6 +137,13 @@ public class LoginServlet extends HttpServlet {
     }
   
     public void updateInfoCustomerAction(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	
+    	String username=request.getParameter("username");
+    	String userId=request.getParameter("userID");
+    	Float userSal=Float.parseFloat(request.getParameter("userSal"));
+    	if(username==null || userId==null){
+    		request.getRequestDispatcher("/WEB-INF/jsp/homePage.jsp").forward(request, response);
+    		return ;
+    	}
+        }	
+    
     }
-}

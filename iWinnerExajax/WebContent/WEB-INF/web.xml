@@ -16,7 +16,6 @@
 		<servlet-name>LoginServlet</servlet-name>
 		<url-pattern>/loginVerification.action</url-pattern>
 	</servlet-mapping>
-
 	<servlet-mapping>
 		<servlet-name>LoginServlet</servlet-name>
 		<url-pattern>/customerDetails.action</url-pattern>
@@ -24,7 +23,7 @@
 	
 	<servlet-mapping>
 		<servlet-name>LoginServlet</servlet-name>
-		<url-pattern>/updateCustomerDetails.action</url-pattern>
+		<url-pattern>/customerDetailsUpdate.action</url-pattern>
 	</servlet-mapping>
 
 </web-app>

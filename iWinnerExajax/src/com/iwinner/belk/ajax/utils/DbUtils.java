@@ -5,7 +5,11 @@ import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Properties;
+import java.util.Set;
 
 public class DbUtils {
 
@@ -38,5 +42,32 @@ public class DbUtils {
 			return connection;
 		}
 
+	}
+	 public static String getCommaSeparatedStringFromList(Collection<Integer> intCollection)
+	  {
+	    StringBuilder builder = new StringBuilder();
+	    for (Iterator localIterator = intCollection.iterator(); localIterator.hasNext(); )
+	    {
+	    	Integer intVal = (Integer)localIterator.next();
+	      if (builder.length() == 0) {
+	        builder.append(intVal);
+	      }
+	      builder.append("," + intVal);
+	    }
+	    return builder.toString();
+	  }
+	  public static void main(String[] args) {
+		Set<Integer> set=new HashSet<Integer>();
+		set.add(45);
+		set.add(32);
+		set.add(12);
+		set.add(35);
+		set.add(22);
+		set.add(62);
+		set.add(5);
+		set.add(18);
+		set.add(13);
+		String str=getCommaSeparatedStringFromList(set);
+		System.out.println(str);
 	}
 }
